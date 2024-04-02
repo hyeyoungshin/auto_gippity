@@ -2,23 +2,23 @@ use crate::models::general::llm::{APIResponse, ChatCompletion, Message};
 use dotenv::dotenv;
 use reqwest::Client;
 use std::env;
-
 use reqwest::header::{HeaderMap, HeaderValue};
 
-// Call Large Language Model (i.g. GPT-4)
+
+// Call Large Language Model (i.e. GPT-4)
 pub async fn call_gpt(messages: Vec<Message>) -> Result<String, Box<dyn std::error::Error + Send>> {
     // Advantages of `Box<dyn std::error::Error>`
-    // 1. trait object, can hold any type that implements std::error:Error
+    // 1. trait object for std::error::Error i.e. can hold any type that implements std::error:Error
     // so different errors can be returned
     // 2. simplify code
     // we can use ? instead of unwrap
     // 3. compatitlbe
     // third party libraries also use it
-    // 4. dynamic dispatch
+    // 4. dynamic dispatch with dyn
     // which method to run is decided at runtime
     // 5. about `+ Send``
     // A trait, ownership of type implementing `Send` can be transferred safely between threads
-    // Important we will call this twice if it fails once
+    // Important since we will call this twice if it fails once
 
     dotenv().ok(); // enables getting info from env vars
 
@@ -68,7 +68,7 @@ pub async fn call_gpt(messages: Vec<Message>) -> Result<String, Box<dyn std::err
     //     .unwrap();
     // dbg!(res_raw.text().await.unwrap());
 
-    // Extract API REsponse
+    // Extract API Response (json string)
     let res: APIResponse = client
         .post(url)
         .json(&chat_completion)

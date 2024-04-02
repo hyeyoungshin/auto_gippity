@@ -1,4 +1,4 @@
-// Use different colors for user input
+// Use different colors for cml user input
 use crossterm::{
     style::{Color, ResetColor, SetForegroundColor},
     ExecutableCommand,
