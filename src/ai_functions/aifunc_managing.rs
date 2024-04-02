@@ -1,7 +1,7 @@
 use ai_functions::ai_function;
 
 #[ai_function]
-pub fn convert_user_input_to_goal(_user_request: &str) {
+pub fn print_user_input_to_goal(_user_request: &str) {
     /// Input: Takes in a user request
     /// Function: Converts user request into a short summarized goal
     /// Output: Prints goal. All outputs start with "build a website that ..."

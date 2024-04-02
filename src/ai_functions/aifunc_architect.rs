@@ -1,7 +1,7 @@
 use ai_functions::ai_function;
 
-#[ai_function] // will be fed into chatgpt as text and ask it to print what this function would print, nothing else
-pub fn print_project_scope(_project_description: &str) { 
+#[ai_function]
+pub fn print_project_scope(_project_description: &str) {
     /// Input: Takes in a user request to build a website project description
     /// Function: Converts user request into JSON response of information items required for a website build.
     /// Important: At least one of the bool results must be true
